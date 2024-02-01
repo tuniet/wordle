@@ -1,25 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Game from './Game.jsx'
+import Home from './Home.jsx'
+import NoPage from './NoPage.jsx'
 
 function App() {
+
+  const [yellow, setyellow] = useState(true);
+  const [rep, setrep] = useState(false);
+  const [codelength, setcodelength] = useState(4);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home setyellow = {setyellow} setrep = {setrep} setcodelength={setcodelength} />} />
+        <Route path="game" element={<Game codelength = {codelength} yellow = {yellow} rep = {rep} />} />
+        <Route path="*" element={<NoPage />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
