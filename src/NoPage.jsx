@@ -5,7 +5,7 @@ function NoPage() {
 
   return (
     <div>
-        no page
+        <h1>404 NO PAGE</h1>
     </div>
   )
 }
